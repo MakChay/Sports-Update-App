@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School Sports App</title>
+</head>
+<body>
+    <h1>Upcoming Matches</h1>
+    <ul>
+        {% for match in matches %}
+            <li>
+                {{ match.team.name }} vs {{ match.team1.name }} ({{ match.date }})
+                {% if match.status == "Completed" %}
+                    - Score: {{ match.team1_score }} - {{ match.team2_score }}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add New Match</h2>
+    <form method="POST" action="/add_match">
+        <select name="team1">
+            {% for team in teams %}
+                <option value="{{ team.id }}">{{ team.name }}</option>
+            {% endfor %}
+        </select>
+        vs
+        <select name="team2">
+            {% for team in teams %}
+                <option value="{{ team.id }}">{{ team.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="date" name="date" required>
+        <button type="submit">Add Match</button>
+    </form>
+
+    <h2>Update Score</h2>
+    <form method="POST" action="/update_score/1">  <!-- Hardcoded for example -->
+        <input type="number" name="team1_score" placeholder="Team 1 Score">
+        <input type="number" name="team2_score" placeholder="Team 2 Score">
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
