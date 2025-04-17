@@ -1,0 +1,214 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Team",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Player",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Match",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "create_default_teams",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "SQLAlchemy",
+        "importPath": "flask_sqlalchemy",
+        "description": "flask_sqlalchemy",
+        "isExtraImport": true,
+        "detail": "flask_sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def home():\n    matches = Match.query.all()\n    teams = Team.query.all()\n    return render_template('index.html', matches=matches, teams=teams)\n@app.route('/add_match', methods=['POST'])\ndef add_match():\n    team1_id = request.form['team1']\n    team2_id = request.form['team2']\n    date = request.form['date']\n    new_match = Match(",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "add_match",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def add_match():\n    team1_id = request.form['team1']\n    team2_id = request.form['team2']\n    date = request.form['date']\n    new_match = Match(\n        team1_id=team1_id,\n        team2_id=team2_id,\n        date=date,\n        status=\"Upcoming\"\n    )",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "update_score",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update_score():\n    match_id = request.form['match_id']\n    match = Match.query.get(match_id)\n    match.team1_score = request.form['team1_score']\n    match.team2_score = request.form['team2_score']\n    match.status = \"Completed\"\n    db.session.commit()\n    return redirect(url_for('home'))\nif __name__ == '__main__':\n    with app.app_context():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__)\napp.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sports.db'\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb.init_app(app)\n@app.route('/')\ndef home():\n    matches = Match.query.all()\n    teams = Team.query.all()\n    return render_template('index.html', matches=matches, teams=teams)\n@app.route('/add_match', methods=['POST'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['SQLALCHEMY_DATABASE_URI']",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sports.db'\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb.init_app(app)\n@app.route('/')\ndef home():\n    matches = Match.query.all()\n    teams = Team.query.all()\n    return render_template('index.html', matches=matches, teams=teams)\n@app.route('/add_match', methods=['POST'])\ndef add_match():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['SQLALCHEMY_TRACK_MODIFICATIONS']",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb.init_app(app)\n@app.route('/')\ndef home():\n    matches = Match.query.all()\n    teams = Team.query.all()\n    return render_template('index.html', matches=matches, teams=teams)\n@app.route('/add_match', methods=['POST'])\ndef add_match():\n    team1_id = request.form['team1']",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "Team",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Team(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(80), unique=True, nullable=False)\n    # Relationships\n    home_matches = db.relationship('Match', foreign_keys='Match.team1_id', backref='home_team', lazy=True)\n    away_matches = db.relationship('Match', foreign_keys='Match.team2_id', backref='away_team', lazy=True)\nclass Player(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(80), nullable=False)\n    team_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=False)",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Player",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Player(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(80), nullable=False)\n    team_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=False)\n    goals = db.Column(db.Integer, default=0)\nclass Match(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    team1_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=False)\n    team2_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=False)\n    date = db.Column(db.String(50), nullable=False)",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Match",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Match(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    team1_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=False)\n    team2_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=False)\n    date = db.Column(db.String(50), nullable=False)\n    team1_score = db.Column(db.Integer, default=0)\n    team2_score = db.Column(db.Integer, default=0)\n    status = db.Column(db.String(20), default=\"Upcoming\")\ndef create_default_teams(app):\n    with app.app_context():",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "create_default_teams",
+        "kind": 2,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "def create_default_teams(app):\n    with app.app_context():\n        default_teams = [\"Lions\", \"Tigers\", \"Eagles\", \"Bears\", \"Wolves\"]\n        for team_name in default_teams:\n            if not Team.query.filter_by(name=team_name).first():\n                team = Team(name=team_name)\n                db.session.add(team)\n        db.session.commit()",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "db = SQLAlchemy()\nclass Team(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(80), unique=True, nullable=False)\n    # Relationships\n    home_matches = db.relationship('Match', foreign_keys='Match.team1_id', backref='home_team', lazy=True)\n    away_matches = db.relationship('Match', foreign_keys='Match.team2_id', backref='away_team', lazy=True)\nclass Player(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String(80), nullable=False)",
+        "detail": "models",
+        "documentation": {}
+    }
+]
